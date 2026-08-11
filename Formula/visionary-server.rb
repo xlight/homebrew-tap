@@ -1,21 +1,21 @@
 class VisionaryServer < Formula
   desc "DeepSeek Visionary MCP server (native binary): vision pipeline + auto-login + stdio MCP service"
   homepage "https://github.com/xlight/deepseek-visionary"
-  version "0.2.2"
+  version "0.3.0"
   if OS.mac?
     if Hardware::CPU.arm?
-      url "https://github.com/xlight/deepseek-visionary/releases/download/v0.2.2/visionary-server-aarch64-apple-darwin.tar.xz"
+      url "https://github.com/xlight/deepseek-visionary/releases/download/v0.3.0/visionary-server-aarch64-apple-darwin.tar.xz"
     end
     if Hardware::CPU.intel?
-      url "https://github.com/xlight/deepseek-visionary/releases/download/v0.2.2/visionary-server-x86_64-apple-darwin.tar.xz"
+      url "https://github.com/xlight/deepseek-visionary/releases/download/v0.3.0/visionary-server-x86_64-apple-darwin.tar.xz"
     end
   end
   if OS.linux?
     if Hardware::CPU.arm?
-      url "https://github.com/xlight/deepseek-visionary/releases/download/v0.2.2/visionary-server-aarch64-unknown-linux-gnu.tar.xz"
+      url "https://github.com/xlight/deepseek-visionary/releases/download/v0.3.0/visionary-server-aarch64-unknown-linux-gnu.tar.xz"
     end
     if Hardware::CPU.intel?
-      url "https://github.com/xlight/deepseek-visionary/releases/download/v0.2.2/visionary-server-x86_64-unknown-linux-gnu.tar.xz"
+      url "https://github.com/xlight/deepseek-visionary/releases/download/v0.3.0/visionary-server-x86_64-unknown-linux-gnu.tar.xz"
     end
   end
   license "MIT"
@@ -44,10 +44,18 @@ class VisionaryServer < Formula
   end
 
   def install
-    bin.install "visionary-server" if OS.mac? && Hardware::CPU.arm?
-    bin.install "visionary-server" if OS.mac? && Hardware::CPU.intel?
-    bin.install "visionary-server" if OS.linux? && Hardware::CPU.arm?
-    bin.install "visionary-server" if OS.linux? && Hardware::CPU.intel?
+    if OS.mac? && Hardware::CPU.arm?
+      bin.install "visionary-server"
+    end
+    if OS.mac? && Hardware::CPU.intel?
+      bin.install "visionary-server"
+    end
+    if OS.linux? && Hardware::CPU.arm?
+      bin.install "visionary-server"
+    end
+    if OS.linux? && Hardware::CPU.intel?
+      bin.install "visionary-server"
+    end
 
     install_binary_aliases!
 
