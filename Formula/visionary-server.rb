@@ -1,32 +1,32 @@
 class VisionaryServer < Formula
   desc "DeepSeek Visionary MCP server (native binary): vision pipeline + auto-login + stdio MCP service"
   homepage "https://github.com/xlight/deepseek-visionary"
-  version "0.7.8"
+  version "0.8.0"
   if OS.mac?
     if Hardware::CPU.arm?
-      url "https://github.com/xlight/deepseek-visionary/releases/download/v0.7.8/visionary-server-aarch64-apple-darwin.tar.xz"
+      url "https://github.com/xlight/deepseek-visionary/releases/download/v0.8.0/visionary-server-aarch64-apple-darwin.tar.xz"
     end
     if Hardware::CPU.intel?
-      url "https://github.com/xlight/deepseek-visionary/releases/download/v0.7.8/visionary-server-x86_64-apple-darwin.tar.xz"
+      url "https://github.com/xlight/deepseek-visionary/releases/download/v0.8.0/visionary-server-x86_64-apple-darwin.tar.xz"
     end
   end
   if OS.linux?
     if Hardware::CPU.arm?
-      url "https://github.com/xlight/deepseek-visionary/releases/download/v0.7.8/visionary-server-aarch64-unknown-linux-gnu.tar.xz"
+      url "https://github.com/xlight/deepseek-visionary/releases/download/v0.8.0/visionary-server-aarch64-unknown-linux-gnu.tar.xz"
     end
     if Hardware::CPU.intel?
-      url "https://github.com/xlight/deepseek-visionary/releases/download/v0.7.8/visionary-server-x86_64-unknown-linux-gnu.tar.xz"
+      url "https://github.com/xlight/deepseek-visionary/releases/download/v0.8.0/visionary-server-x86_64-unknown-linux-gnu.tar.xz"
     end
   end
   license "MIT"
 
   BINARY_ALIASES = {
-    "aarch64-apple-darwin":      {},
+    "aarch64-apple-darwin": {},
     "aarch64-unknown-linux-gnu": {},
-    "x86_64-apple-darwin":       {},
-    "x86_64-pc-windows-gnu":     {},
-    "x86_64-unknown-linux-gnu":  {},
-  }.freeze
+    "x86_64-apple-darwin": {},
+    "x86_64-pc-windows-gnu": {},
+    "x86_64-unknown-linux-gnu": {}
+  }
 
   def target_triple
     cpu = Hardware::CPU.arm? ? "aarch64" : "x86_64"
